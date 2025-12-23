@@ -1,11 +1,11 @@
-package com.muhammad.socialnetwork.dto;
+package com.muhammad.socialnetwork.model;
 
-public class ImageDto {
+public class Image {
    private String title;
    private long id;
    private byte[] content;
   
-   public ImageDto(String title, long id, byte[] content) {
+   public Image(String title, long id, byte[] content) {
     this.title = title;
     this.id = id;
     this.content = content;

@@ -1,3 +1,35 @@
 spring:
+  config:
+    import: 
+      - "optional:file:./secrets.properties"
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google.client.id}
+            client-secret: ${google.client.secret}
+            # scope:
+            #   - email
+            #   - profile
+          github:
+            client-id: ${github.client.id}
+            client-secret: ${github.client.secret}
+            # scope:
+            #   - email
+            #   - profile
   application:
     name: socialnetwork
+  datasource:
+    url: jdbc:postgresql://localhost:5432/social_net
+    username: ${db.username}
+    password: ${db.password}
+    driver-class-name: org.postgresql.Driver 
+  jpa:
+      hibernate:
+        # 'update' automatically creates tables based on your @Entity classes
+        ddl-auto: update
+      # show-sql: true # Prints the SQL Spring runs to your console (great for learning)
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect

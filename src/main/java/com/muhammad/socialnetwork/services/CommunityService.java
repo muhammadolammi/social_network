@@ -6,27 +6,27 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.muhammad.socialnetwork.dto.ImageDto;
-import com.muhammad.socialnetwork.dto.MessageDto;
+import com.muhammad.socialnetwork.model.Image;
+import com.muhammad.socialnetwork.model.Message;
 @Service
 public class CommunityService {
-   public List<MessageDto> getCommunityMessages( int page){
-      return Arrays.asList(new MessageDto(1L, "First message"),
-                new MessageDto(2L, "Second message"));
+   public List<Message> getCommunityMessages( int page){
+      return Arrays.asList(new Message(1L, "First message"),
+                new Message(2L, "Second message"));
     }
 
-    public List<ImageDto> getCommunityImmages( int page){
-        return Arrays.asList(new ImageDto("First Title", 1l, null), new ImageDto("Second Title", 2L, null));
+    public List<Image> getCommunityImmages( int page){
+        return Arrays.asList(new Image("First Title", 1l, null), new Image("Second Title", 2L, null));
 
     }
    
 
-    public MessageDto postMessage( MessageDto messageDto) {
-        return new MessageDto(3L, "New Content");
+    public Message postMessage( Message messageDto) {
+        return new Message(3L, "New Content");
     }
 
-    public ImageDto postImage( MultipartFile file,String title) {
-        return new ImageDto("New Title", 3L, null);
+    public Image postImage( MultipartFile file,String title) {
+        return new Image("New Title", 3L, null);
         
     }
 }

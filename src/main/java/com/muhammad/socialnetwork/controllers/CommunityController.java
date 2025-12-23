@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.muhammad.socialnetwork.dto.ImageDto;
-import com.muhammad.socialnetwork.dto.MessageDto;
+import com.muhammad.socialnetwork.model.Image;
+import com.muhammad.socialnetwork.model.Message;
 import com.muhammad.socialnetwork.services.CommunityService;
 
 @RestController
@@ -27,25 +27,25 @@ public CommunityController(CommunityService communityService) {
     }
 
 @GetMapping("/messages")
-    public ResponseEntity<List<MessageDto>> getCommunityMessages(@RequestParam(value = "page", defaultValue = "0") int page){
+    public ResponseEntity<List<Message>> getCommunityMessages(@RequestParam(value = "page", defaultValue = "0") int page){
         return ResponseEntity.ok(communityService.getCommunityMessages(page));
 
     }
 
     @GetMapping("/images")
-    public ResponseEntity<List<ImageDto>> getCommunityImmages(@RequestParam(value = "page", defaultValue = "0") int page){
+    public ResponseEntity<List<Image>> getCommunityImmages(@RequestParam(value = "page", defaultValue = "0") int page){
                 return ResponseEntity.ok(communityService.getCommunityImmages(page));
     }
    
 
       @PostMapping("/messages")
-    public ResponseEntity<MessageDto> postMessage(@RequestBody MessageDto messageDto) {
+    public ResponseEntity<Message> postMessage(@RequestBody Message messageDto) {
         return ResponseEntity.created(URI.create("/v1/community/messages"))
                 .body(communityService.postMessage(messageDto));
     }
 
     @PostMapping("/images")
-    public ResponseEntity<ImageDto> postImage(@RequestParam MultipartFile file,
+    public ResponseEntity<Image> postImage(@RequestParam MultipartFile file,
                                               @RequestParam(value = "title") String title) {
         return ResponseEntity.created(URI.create("/v1/community/images"))
                 .body(communityService.postImage(file, title));

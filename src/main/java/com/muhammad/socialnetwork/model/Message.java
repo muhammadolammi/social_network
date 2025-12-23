@@ -1,10 +1,10 @@
-package com.muhammad.socialnetwork.dto;
+package com.muhammad.socialnetwork.model;
 
-public class MessageDto {
+public class Message {
 
     private Long id;
     private String content;
-    public MessageDto(Long id, String content) {
+    public Message(Long id, String content) {
         this.id = id;
         this.content = content;
     }
