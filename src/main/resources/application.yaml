@@ -9,15 +9,15 @@ spring:
           google:
             client-id: ${google.client.id}
             client-secret: ${google.client.secret}
-            # scope:
-            #   - email
-            #   - profile
+            scope:
+              - email
+              - profile
           github:
             client-id: ${github.client.id}
             client-secret: ${github.client.secret}
-            # scope:
-            #   - email
-            #   - profile
+            scope:
+              - read:user
+              - user:email
   application:
     name: socialnetwork
   datasource:
@@ -33,3 +33,6 @@ spring:
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
+env:
+  frontend_url: http://localhost:3000
+  client_api_key: ${secrets.client_api_key}
